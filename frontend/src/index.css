@@ -1,0 +1,31 @@
+#subMenuContainer ul li a {
+
+  color: #000 !important;
+  padding: 5px !important;
+  font-weight: 600 !important;
+}
+
+/*   #subMenuContainer ul {
+
+ margin-top: 50px !important;
+   width: 70% !important;
+   margin-left: 100px !important;
+}
+*/
+
+#searchBox {
+  margin: 0 0 10px 0 !important;
+  margin-left: 23% !important;
+
+}
+#subMenuContainer {
+  min-height: 200px !important;
+  z-index: 99999999 !important;
+  background-image: url('https://www.enzahome.com.tr/frontEnd/site/images/ana_sayfa_bg_v1.jpg') !important;
+}
+
+a.catLink.rightnew h2 {
+  font-size: 11px;
+  font-weight: 600;
+  margin: 0;
+}
