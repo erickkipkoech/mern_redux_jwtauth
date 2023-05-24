@@ -1,11 +1,13 @@
-import { useState } from 'react'
-
+import { useState } from 'react';
+import Header from './components/static/Header';
+import Home from './components/screens/Home';
 
 const App=()=> {
 
   return (
     <>
-      App
+    <Header/>
+    <Home/>
     </>
   )
 }

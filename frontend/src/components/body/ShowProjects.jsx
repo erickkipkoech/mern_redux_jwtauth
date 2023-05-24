@@ -1,7 +1,0 @@
-const ShowProjects=()=>{
-    return(
-        <>
-        ShowProjects
-        </>
-    )
-}
