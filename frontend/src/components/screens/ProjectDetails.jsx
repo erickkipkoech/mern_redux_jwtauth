@@ -1,9 +1,9 @@
 import React from "react";
 import logo from "../../assets/logo.png";
-
-const ShowProjects = () => {
-  return (
-    <section className="slider projects_section">
+const ProjectDetails=()=>{
+    return(
+        <>
+        <section className="slider">
       <div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
@@ -15,7 +15,8 @@ const ShowProjects = () => {
 
       <img src={logo} />
     </section>
-  );
+        </>
+    )
 };
 
-export default ShowProjects;
+export default ProjectDetails;

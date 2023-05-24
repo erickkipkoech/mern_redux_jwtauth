@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import Header from './components/static/Header';
-import Home from './components/screens/Home';
+import { Outlet } from 'react-router-dom';
 
 const App=()=> {
 
   return (
     <>
     <Header/>
-    <Home/>
+    <Outlet/>
     </>
   )
 }

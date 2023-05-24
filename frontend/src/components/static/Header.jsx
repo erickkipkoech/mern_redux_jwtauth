@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header=()=>{
     return(
         <>
@@ -15,12 +17,12 @@ const Header=()=>{
 
 							<div className="main_nav_menu">
 								<ul className="standard_dropdown main_nav_dropdown">
-									<li><a href="#">Home<i className="fas fa-chevron-down"></i></a></li>
+									<li><Link to='/'>Home<i className="fas fa-chevron-down"></i></Link></li>
 									<li className="hassubs">
-										<a href="#">Collection<i className="fas fa-chevron-down"></i></a>
+										<Link to='#'>Collection<i className="fas fa-chevron-down"></i></Link>
 										<ul>
 											<li>
-												<a href="#">Collections<i className="fas fa-chevron-down"></i></a>
+												<Link to='/collection'>Collections<i className="fas fa-chevron-down"></i></Link>
 											</li>
 										</ul>
 									</li>
