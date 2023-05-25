@@ -14,8 +14,6 @@ import ShowProjects from "./components/screens/ShowProjects.jsx";
 import ProjectDetails from "./components/screens/ProjectDetails.jsx";
 import About from "./components/screens/About.jsx";
 import Contact from "./components/screens/Contact.jsx";
-import Signup from "./components/auth-screens/signup.jsx";
-import Login from "./components/auth-screens/login.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,8 +22,6 @@ const router = createBrowserRouter(
       <Route path="/collection" element={<ProjectDetails />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Signup />} />
     </Route>
   )
 );
