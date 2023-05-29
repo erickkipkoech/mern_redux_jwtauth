@@ -1,4 +1,4 @@
-import Carousel from "../carousel/HeroSlider";
+import Carousel from "../helpers/HeroSlider";
 import ShowProjects from "./ShowProjects";
 const Home=()=>{
     return(

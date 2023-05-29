@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useLoginMutation } from "../../slices/usersApiSlice.js";
 import { setCredentials } from "../../slices/authSlice.js";
+import { toast } from "react-toastify";
+import Loader from "../helpers/Loader.jsx";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -28,7 +30,7 @@ const LoginScreen = () => {
       dispatch(setCredentials({ ...res }));
       navigate("/");
     } catch (err) {
-      console.log(err?.data?.message || err.error);
+      toast.error(err?.data?.message || err.error);
     }
   };
   return (
@@ -43,7 +45,7 @@ const LoginScreen = () => {
               ></i>
               <span className="h1 fw-bold mb-0">Logo</span>
             </div>
-
+            {isLoading && <Loader />}
             <div className="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
               <form onSubmit={submitHandler} style={{ width: "23rem" }}>
                 <h3

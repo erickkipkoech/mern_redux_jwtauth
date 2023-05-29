@@ -1,6 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useLogoutMutation } from "../../slices/usersApiSlice.js";
+import {logout} from '../../slices/authSlice.js'
 
 const Header = () => {
+  const { userInfo } = useSelector((state) => state.auth);
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+  const [logoutApiCall]=useLogoutMutation();
+
+  const logoutHandler=async (e)=>{
+    e.preventDefault();
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate('/');
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return (
     <>
       <nav className="main_nav header scrolled ">
@@ -41,6 +59,31 @@ const Header = () => {
                         Contact<i className="fas fa-chevron-down"></i>
                       </Link>
                     </li>
+                    {userInfo ? (
+                      <li className="hassubs">
+                        <Link to="#">
+                          {userInfo.name}{" "}
+                          <i className="fas fa-chevron-down"></i>
+                        </Link>
+                        <ul>
+                          <li>
+                            <Link to="/profile">
+                              Profile<i className="fas fa-chevron-down"></i>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="/add">
+                              Add New<i className="fas fa-chevron-down"></i>
+                            </Link>
+                          </li>
+                          <li>
+                            <button onClick={logoutHandler}>
+                              Logout<i className="fas fa-chevron-down"></i>
+                            </button>
+                          </li>
+                        </ul>
+                      </li>
+                    ) : null}
                   </ul>
                 </div>
 
