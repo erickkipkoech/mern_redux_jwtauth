@@ -1,15 +1,43 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useRegisterMutation } from "../../slices/usersApiSlice";
+import { toast } from "react-toastify";
+import Loader from "../helpers/Loader.jsx";
+import { setCredentials } from "../../slices/authSlice";
 
 const RegisterScreen = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setPasswordConfirmation] = useState("");
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [register, { isLoading }] = useRegisterMutation();
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/");
+    }
+  }, [navigate, userInfo]);
+
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("submit");
+    if (password !== confirmPassword) {
+      toast.error("passwords do not match");
+    } else {
+      try {
+        const res = await register({ name, email, password }).unwrap();
+        dispatch(setCredentials({ ...res }));
+        navigate("/");
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
+    }
   };
   return (
     <section className="vh-100">
@@ -32,6 +60,19 @@ const RegisterScreen = () => {
                 >
                   Sign up
                 </h3>
+
+                <div className="form-outline mb-4">
+                  <label className="form-label" htmlFor="form2Example18">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={name}
+                    className="form-control form-control-lg"
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
 
                 <div className="form-outline mb-4">
                   <label className="form-label" htmlFor="form2Example18">
@@ -71,7 +112,7 @@ const RegisterScreen = () => {
                     onChange={(e) => setPasswordConfirmation(e.target.value)}
                   />
                 </div>
-
+                {isLoading && <Loader />}
                 <div className="pt-1 mb-4">
                   <button
                     className="btn btn-info btn-lg btn-block"
