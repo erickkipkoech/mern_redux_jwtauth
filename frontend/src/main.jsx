@@ -18,6 +18,7 @@ import LoginScreen from "./components/auth-screens/LoginScreen.jsx";
 import RegisterScreen from "./components/auth-screens/RegisterScreen.jsx";
 import store from "./store.js";
 import { Provider } from "react-redux";
+import UploadProjects from "./components/screens/UploadProjects.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
+      <Route path="/add_projects" element={<UploadProjects />} />
     </Route>
   )
 );

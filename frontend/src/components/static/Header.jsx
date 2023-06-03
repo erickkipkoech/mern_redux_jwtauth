@@ -72,7 +72,7 @@ const Header = () => {
                             </Link>
                           </li>
                           <li>
-                            <Link to="/add">
+                            <Link to="/add_projects">
                               Add New<i className="fas fa-chevron-down"></i>
                             </Link>
                           </li>
