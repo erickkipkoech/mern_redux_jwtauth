@@ -34,18 +34,18 @@ const UploadProjects = () => {
         </div>
         <hr />
         <div className="form-group mt-3">
-          <label className="mr-2">Upload project cover photo:</label>
+          <label className="me-2">Upload project cover photo: </label>
           <input type="file" name="file" />
         </div>
         <hr />
         <div className="row gx-5">
           <div className="col">
-            <button type="submit" className="px-3 btn btn-primary">
+            <button className="px-3 btn btn-primary">
               Preview
             </button>
           </div>
           <div className="col justify-content-end d-flex">
-            <button type="" className="px-3 btn btn-success">
+            <button type="submit"  className="px-3 btn btn-success">
               Submit
             </button>
           </div>
