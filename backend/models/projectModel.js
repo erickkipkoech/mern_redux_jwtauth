@@ -19,6 +19,6 @@ const productsSchema=mongoose.Schema({
     timestamps:true
 });
 
-const Products=mongoose.model('Products',userSchema);
+const Products=mongoose.model('Products',productsSchema);
 
 export default Products;
