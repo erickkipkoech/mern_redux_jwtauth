@@ -45,12 +45,7 @@ const fetchProducts = asyncHandler(async (req, res) => {
 //route GET /api/products/product
 //@access Private
 const fetchOneProduct = asyncHandler(async (req, res) => {
-  const product = {
-    id: req.user._id,
-    name: req.user.name,
-    email: req.user.email,
-    created_at: req.user.created_at,
-  };
+  const product =await Products.findById(req.params.id);
   if (product) {
     res.status(200).json(product);
   } else {
@@ -64,7 +59,7 @@ const fetchOneProduct = asyncHandler(async (req, res) => {
 //@access Private
 
 const updateProduct = asyncHandler(async (req, res) => {
-  const product = await Products.findById(req.body._id);
+  const product = await Products.findById(req.params.id);
   if (product) {
     product.product_name = req.body.product_name || product.product_name;
     product.description = req.body.description || product.description;
@@ -72,9 +67,9 @@ const updateProduct = asyncHandler(async (req, res) => {
 
     const updProduct = await product.save();
     res.status(200).json({
-      id: updProduct._id,
       product_name: updProduct.product_name,
       description: updProduct.description,
+      image_path:updProduct.image_path
     });
   } else {
     res.status(400);
@@ -87,7 +82,7 @@ const updateProduct = asyncHandler(async (req, res) => {
 //@access Private
 
 const deleteRecord = asyncHandler(async (req, res) => {
-  const delRecord = await Products.deleteOne(req.delRecord._id);
+  const delRecord = await Products.findByIdAndDelete(req.params.id);
   if (delRecord) {
     res
       .status(200)

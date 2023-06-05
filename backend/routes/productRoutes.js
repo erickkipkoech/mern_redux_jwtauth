@@ -13,7 +13,7 @@ const router = express.Router();
 router.route("/").post(protect, addProduct);
 router.route("/products").get(protect, fetchProducts);
 router
-  .route("/product")
+  .route("/product/:id")
   .get(protect, fetchOneProduct)
   .put(protect, updateProduct)
   .delete(protect, deleteRecord);
